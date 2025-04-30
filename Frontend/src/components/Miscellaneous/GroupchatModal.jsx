@@ -17,8 +17,8 @@ import {
 import axios from "axios";
 import React, { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
-import UserBadgeItem from "../userAvatar/UserBadgeitem";
-import UserListItem from "../userAvatar/UserListItem";
+import UserBadgeitem from "../userAvatar/UserBadgeitem";
+import UserListitem from "../userAvatar/UserListItem";
 
 const GroupchatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -162,7 +162,7 @@ const GroupchatModal = ({ children }) => {
             {/* Selected Users Badges */}
             <Box w="100%" display="flex" flexWrap="wrap" mb={2}>
               {selectedUsers.map((user) => (
-                <UserBadgeItem
+                <UserBadgeitem
                   key={user._id}
                   user={user}
                   handleFunction={() => handleDelete(user)}
@@ -175,7 +175,7 @@ const GroupchatModal = ({ children }) => {
               <Spinner size="lg" />
             ) : (
               searchResult?.slice(0, 4).map((user) => (
-                <UserListItem
+                <UserListitem
                   key={user._id}
                   user={user}
                   handleFunction={() => handleGroup(user)}
