@@ -17,7 +17,7 @@ import {
 import axios from "axios";
 import React, { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
-import UserBadgeItem from "../../components/userAvatar/UserBadgeItem";
+import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
 
 const GroupchatModal = ({ children }) => {
