@@ -112,7 +112,6 @@
 
 
 
-
 import cors from 'cors';
 import dotenv from 'dotenv';
 import http from 'http';
@@ -134,7 +133,11 @@ app.use(express.json());
 
 // CORS configuration
 app.use(cors({
-  origin: ["http://localhost:5000", "https://glittery-frangipane-0f6a76.netlify.app"],
+  origin: [
+    "http://localhost:5000",
+    "https://glittery-frangipane-0f6a76.netlify.app",
+    "https://gentle-treacle-456888.netlify.app"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
@@ -157,7 +160,11 @@ const PORT = process.env.PORT || 3000;
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: ["http://localhost:5000", "https://glittery-frangipane-0f6a76.netlify.app"],
+    origin: [
+      "http://localhost:5000",
+      "https://glittery-frangipane-0f6a76.netlify.app",
+      "https://gentle-treacle-456888.netlify.app"
+    ],
     methods: ["GET", "POST"],
     credentials: true
   },
@@ -231,4 +238,3 @@ io.on("connection", (socket) => {
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
