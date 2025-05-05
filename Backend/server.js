@@ -162,7 +162,7 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:5000",
-      "https://glittery-frangipane-0f6a76.netlify.app",
+     
       "https://gentle-treacle-456888.netlify.app"
     ],
     methods: ["GET", "POST"],
