@@ -29,6 +29,12 @@ app.use(errorHandler);
 
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
+app.use(
+  cors({
+    origin: "https://glowing-moonbeam-34f320.netlify.app",
+    credentials: true,
+  })
+);   /// new line added
 
 const io = new Server(server, {
   pingTimeout: 60000,
