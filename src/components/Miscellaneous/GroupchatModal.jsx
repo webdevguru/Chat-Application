@@ -20,7 +20,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
 import UserBadgeitem from "../userAvatar/UserBadgeitem";
-import UserListitem from "../userAvatar/UserListitem";
+import UserListItem from "../userAvatar/UserListItem";
 
 const GroupchatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -131,7 +131,11 @@ const GroupchatModal = ({ children }) => {
   };
 
   const handleGroup = (userToAdd) => {
-    if (selectedUsers.some((selectedUser) => selectedUser._id === userToAdd._id)) {
+    const alreadyAdded = selectedUsers.some(
+      (selectedUser) => selectedUser._id === userToAdd._id
+    );
+
+    if (alreadyAdded) {
       toast({
         title: "User already added!",
         status: "warning",
@@ -142,12 +146,12 @@ const GroupchatModal = ({ children }) => {
       return;
     }
 
-    setSelectedUsers([...selectedUsers, userToAdd]);
+    setSelectedUsers((prev) => [...prev, userToAdd]);
   };
 
   const handleDelete = (userToDelete) => {
-    setSelectedUsers(
-      selectedUsers.filter(
+    setSelectedUsers((prev) =>
+      prev.filter(
         (selectedUser) => selectedUser._id !== userToDelete._id
       )
     );
@@ -189,7 +193,6 @@ const GroupchatModal = ({ children }) => {
               />
             </FormControl>
 
-            {/* Selected Users Badges */}
             <Box
               w="100%"
               display="flex"
@@ -206,12 +209,11 @@ const GroupchatModal = ({ children }) => {
               ))}
             </Box>
 
-            {/* Search Results */}
             {loading ? (
               <Spinner size="lg" />
             ) : (
               searchResult.slice(0, 4).map((searchUser) => (
-                <UserListitem
+                <UserListItem
                   key={searchUser._id}
                   user={searchUser}
                   handleFunction={() => handleGroup(searchUser)}
