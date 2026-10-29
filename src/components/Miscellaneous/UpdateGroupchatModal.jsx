@@ -3,7 +3,7 @@ import { Box, Button, IconButton, Modal, ModalBody, ModalCloseButton, ModalConte
 import axios from 'axios';
 import React, { useState } from 'react';
 import { ChatState } from '../../context/ChatProvider';
-import UserBadgeItem from '../userAvatar/UserBadgeItem';
+import UserBadgeitem from '../userAvatar/UserBadgeitem';
 
 const UpdateGroupchatModal = ({ Fetchagain, SetFetchagain,fetchMessages }) => {
 
